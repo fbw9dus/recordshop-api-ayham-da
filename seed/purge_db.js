@@ -17,7 +17,7 @@ console.log("I shall purge all users");
     console.log("Database connection established...");
   });
 
-  console.log("I will purge all the old users...");
+  console.log("I will purge all the old use...");
 
   try {
     await User.deleteMany({});
