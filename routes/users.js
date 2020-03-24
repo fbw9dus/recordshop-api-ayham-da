@@ -13,7 +13,7 @@ const {
 } = require("../controllers/usersController");
 
 router
-  .route("/")
+  .route("/users")
   .get(getUsers)
   .post(addUser);
 
