@@ -5,6 +5,7 @@ const FileSync = require("lowdb/adapters/FileSync");
 const adapter = new FileSync("data/db.json");
 const db = low(adapter);
 const {userValdationRules}=require('../lib/validation/validator')
+const {validateInputs} = require('../middleware/validator')
 const {
   getUsers,
   getUser,
@@ -16,7 +17,7 @@ const {
 router
   .route("/")
   .get(getUsers)
-  .post(userValdationRules,addUser);
+  .post(validateInputs(userValdationRules),addUser);
 
 router
   .route("/:id")
