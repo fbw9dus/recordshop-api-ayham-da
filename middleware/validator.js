@@ -1,5 +1,5 @@
 const { validationResult } = require('express-validator')
-​
+
 const validateInputs = rules => {
     return [
         ...rules,
@@ -8,10 +8,9 @@ const validateInputs = rules => {
             if(!errors.isEmpty()){
                 return res.status(422).json({errors: errors.array()})
             }
-            
             next()
         }
     ]
 }
-​
+
 module.exports = {validateInputs}
