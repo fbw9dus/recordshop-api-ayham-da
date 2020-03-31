@@ -1,6 +1,16 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
+const address = new Schema({
+  street:{
+    type: String,
+    required: true
+  },
+  city:{
+    type: String,
+    required: true
+  }})
+
 const UserSchema = new Schema(
   {
     firstName: {
@@ -11,6 +21,9 @@ const UserSchema = new Schema(
       type: String,
       required: true
     },
+    
+    address: address,
+    
     email: {
       type: String,
       required: true
