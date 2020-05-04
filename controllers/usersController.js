@@ -25,35 +25,19 @@ exports.deleteUser = async (req, res, next) => {
 };
 
 exports.updateUser = async (req, res, next) => {
-  try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true
-    });
-    if (!user) throw new createError.NotFound();
-    res.status(200).send(user);
-  } catch (e) {
-    next(e);
-  }
+  const { id } = req.params;
+  const dt = req.body;
+  // Schreib hier code um den User mit der id aus params in der users-Collection mit den Daten aus req.body zu aktualisieren
+  var user = await Users.findByIdAndUpdate(id, dt, {new: true})
+  res.status(200).send(user);
 };
 
 exports.addUser = async (req, res, next) => {
-  try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
-    }
-    const user = req.body;
-    user.email = user.email.toLowerCase();
-
-    // Schreib hier code um die Daten des neuen Kunden aus req.body in der users-Collection zu speichern
-    await User.init()
-    const newUser = new User(user)
-    await newUser.save()
-    res.status(200).send(newUser);
-  } catch (error) {
-    next(error)
-  }
+  const data = req.body;
+  // Schreib hier code um die Daten des neuen Kunden aus req.body in der users-Collection zu speichern
+  var user = new Users(data)
+  await user.save()
+  res.status(200).send(user);
 };
 exports.loginUser = async (req, res, next) => {
   const { email, password } = req.body
