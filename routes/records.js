@@ -21,10 +21,13 @@ router
   .get(getRecords)
   .post(auth, addRecord);
   /*.post((req, res, next) => {
+
     // is auth?
+
     const token = req.header("x-auth")
     const decodedToken
     const user = User.findOne({
+
       _id: decodedToken._id,
       "tokens.token": token,
       "token.access": "auth"

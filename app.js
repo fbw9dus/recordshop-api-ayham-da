@@ -41,6 +41,16 @@ app.use(setCors);
 /** STATIC FILES*/
 app.use(express.static(path.join(__dirname, "public")));
 
+
+//validation 
+
+
+
+
+
+
+
+
 /** ROUTES */
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
