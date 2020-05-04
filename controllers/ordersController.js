@@ -3,6 +3,7 @@ const Order = require('../models/Order')
 exports.getOrders = async (req, res, next) => {
   // Schreib hier code um alle Bestellungen aus der orders-Collection zu holen
   const orders = await Order.find().populate("record", "-price -year")
+  console.log("ORDERS with record", orders)
   res.status(200).send(orders);
 };
 
